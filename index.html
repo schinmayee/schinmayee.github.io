@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Chinmayee Shah</title>
+</head>
+<body>
+<div id="layout-content">
+<div id="container">
+
+<div id="container-inner">
+<p><br /></p>
+<table class="imgtable"><tr><td>
+<img src="images/profile.jpg" alt="" width="200px" height="200px" />&nbsp;</td>
+<td align="left"><h1>Chinmayee Shah</h1>
+<p>Ph.D. Student<br />
+<a href="http://ee.stanford.edu/">Department of Electrical Engineering</a><br />
+<a href="http://www.stanford.edu/">Stanford University</a><br /></p>
+<p>Gates Building, Office 284<br />
+Stanford, CA 94305<br />
+chinmayee[dot]shah[at]stanford[dot]edu</p>
+</td></tr></table>
+<p><br /></p>
+<p>I am a Ph.D. student in the <a href="http://ee.stanford.edu/">Electrical Engineering 
+department</a> at <a href="http://www.stanford.edu/Stanford">University</a>.
+I am working with <a href="http://csl.stanford.edu/~pal/">Prof. Philip Levis</a>,
+and am a part of the <a href="http://sing.stanford.edu/site">SING lab</a>.
+I received my M.S. from Stanford in 2014.
+Before that, I completed my undergrad from
+<a href="http://www.iitb.ac.in/">Indian Institute of Technology, Bombay</a>, in 2011.</p>
+<h2>Research</h2>
+<h3>Distributed AMR Simulations</h3>
+<p>Adaptive mesh refinement provides the ability to refine and coarsen simulation
+domains, to focus computational resources in regions of interest. For a
+large water simulation, this may be the surface, with ripples and splashes,
+and regions with turbulence and vorticities. Dynamic tree-based structures
+such as octrees and <a href="http://www.openvdb.org/">OpenVDB</a> provide data-structures
+that can adapt dynamically. Distributing such simulations efficiently is
+challenging, because of the complexity of managing neighbors, boundary data
+and communication between neighboring partitions, and load imbalance.
+I am currently researching a software stack and techniques to address these
+issues.</p>
+<h3><a href="http://ebblang.org">Ebb DSL For Physical Simulations</a></h3>
+<p>Ebb is a language for writing performance portable physical simulations &ndash;
+Ebb programs can run efficiently on CPUs and GPUs.
+Ebb supports a variety of domains such as grids, particles, triangular meshes
+and tetrahedral meshes. It uses a relational data model, that is flexible
+enough to capture these domains, and abstract and informative enough to
+parallelize the code correctly. For more details, demos and tutorials on Ebb,
+check out <a href="http://ebblang.org/">this page</a>.</p>
+<h3><a href="http://nimbus.stanford.edu">Fast Cloud Computing with Nimbus</a></h3>
+<p>Nimbus is an asynchronous many task based framework, for running computations
+in the cloud. It automatically schedules and load-balances computations across
+nodes, and provides fault-tolerance.
+Execution templates allows Nimbus to run tasks at rates a magnitude higher
+than Spark, while keeping the flexibility of dynamic scheduling.
+More information about Nimbus is available <a href="http://nimbus.stanford.edu/">here</a>.
+We have implemented several applications and a physical simulation with Nimbus.</p>
+<h2>Projects</h2>
+<h3><a href="files/contextual-code-completion.pdf">Contextual Code Completion Using Machine Learning</a></h3>
+<p>Large projects such as kernels, drivers and libraries follow a code
+style, and have recurring patterns. In this project, we explored
+learning based code recommendation, to use project context
+to give meaningful suggestions. Using word vectors to model
+code tokens, and neural network based learning techniques, we
+were able to capture interesting patterns, and predict code that
+cannot be predicted by a simple grammar and syntax based approach
+as in conventional IDEs. We achieved a total prediction
+accuracy of 56.0% on Linux kernel, a C project, and 40.6% on
+Twisted, a Python networking library.
+The complete project report is available
+<a href="files/contextual-code-completion.pdf">here</a> and the code is on github
+<a href="https://github.com/subhasis256/ml_code_completion">here</a>.</p>
+<h3><a href="https://reproducingnetworkresearch.wordpress.com/2015/05/31/cs244-15-codel-controlling-delay-in-queues/">Reproducing CoDel with Mahimahi</a></h3>
+<p>Droptail queuing is a simple way of managing queues where internet switches
+buffer packets till their internal memory is full, and ignore and drop packets
+that arrive once their memory is full. While simple, droptail can perform
+poorly in practice. With memories becoming cheap, and buffers becoming large,
+it can cause large packet delays for latency sensitive applications.
+Active queue management techniques drop packets even before the buffer is
+completely full. CoDel is a famous AQM algorithm, that drops packets that
+stay in the queue above a target for a period of time.
+In this project, we emulated CoDel with Mahimahi, to reproduce the
+<a href="http://queue.acm.org/detail.cfm?id=2209336">original results</a>,
+and we also evaluated CoDel's performance with faster varying bandwidths,
+using a 4G trace.
+More details about the implementation and results are
+<a href="https://reproducingnetworkresearch.wordpress.com/2015/05/31/cs244-15-codel-controlling-delay-in-queues/">here</a>.</p>
+<h3><a href="files/load-balancing-cs344c.pdf">Load Balancing PhysBAM on Multi-Core Machines</a></h3>
+<p><a href="http://physbam.stanford.edu/">PhysBAM</a> is a physics based simulation library
+capable of simulating various phenomenon like compressible and incompressible
+fluids, rigid and deformable solids, coupled fluids and solids, fracture and
+fire.
+Parallelizing a simulation by creating a separate process per partition
+on a single node can result in skewed work load across processors.
+For example, one process may be in charge of regions that contain mostly air,
+resulting in little actual work.
+Over-partitioning can solve this problem, but can result in large amount of
+on chip communication.
+Also, over-partitioning does not work well for linear solves as in projection,
+to enforce compressibility.
+In this project, we used thread queues to divide work more evenly, with
+less overhead.
+For stages like projection, which do not perform well with excessive
+sub-division, we used fewer threads to operate on the same data.
+For stages like advection, we added guards to check for water, avoiding
+wasteful work.
+More details about the project and results are available
+<a href="files/load-balancing-cs344c.pdf">here</a>.</p>
+<h3><a href="files/DMT-relays.pdf">Diversity Multiplexing Trade-off for Full Duplex Relay Networks</a> </h3>
+<p>Co-operative communication with relay assistance helps in enhancing the
+capacity of point to point links.
+Presence of multiple relays provides multiple paths from the source to the
+destination.
+With no channel state information at the transmitter, these paths can be used
+to either obtain a high communication rate or a low probability of error.
+We can trade off one of these quantities for the other.
+In this project, I derived a lower bound on the error probability at the
+destination as a function of the communication rate, assuming a finite time
+for communication. More details and derivations are in the project report
+<a href="files/DMT-relays.pdf">here</a>.</p>
+<h2>Papers</h2>
+<p><br />
+<a href="http://dl.acm.org/citation.cfm?id=2892632">Ebb: A DSL for Physical Simulation on CPUs and GPUs</a> <br />
+Gilbert Bernstein, Chinmayee Shah, Crystal Lemire, Zachary DeVito,
+Matthew Fisher, Philip Levis, and Pat Hanrahan <br />
+ACM Transactions on Graphics (TOG) 35, no. 2 (2016): 21. <br /></p>
+<p><a href="http://arxiv.org/abs/1606.01966">Distributed Graphical Simulation in the Cloud</a> <br />
+Omid Mashayekhi, Chinmayee Shah, Hang Qu, Andrew Lim, and Philip Levis <br />
+arXiv preprint arXiv:1606.01966 (2016). <br /></p>
+<p><a href="http://arxiv.org/abs/1606.01972">Scalable, Fast Cloud Computing with Execution Templates</a> <br />
+Omid Mashayekhi, Hang Qu, Chinmayee Shah, and Philip Levis <br />
+arXiv preprint arXiv:1606.01972 (2016). <br /></p>
+<p><a href="https://sing.stanford.edu/site/publications/igcc14kazandjieva.pdf">System Architecture Support for Green Enterprise Computing</a> <br />
+Maria Kazandjieva, Chinmayee Shah, Ewen Cheslack-Postava,
+Behram Mistree, and Philip Levis <br />
+In Green Computing Conference (IGCC), 2014 International, pp. 1-10. IEEE, 2014.</p>
+<h2>Talks and Posters</h2>
+<p><br />
+<a href="https://www.usenix.org/conference/diversity14/workshop-program/presentation/shah">Decoupling Runtime and Application Data in Geometrical Simulations</a> <br />
+In 2014 Workshop on Supporting Diversity in Systems Research (Diversity 14). 2014. <br /></p>
+<p><a href="files/liszt-updates-poster.pdf">Liszt Updates</a> at
+<a href="http://exascale.stanford.edu/">PSAAP II</a> review, Stanford, May 2016.<br /></p>
+<p><a href="files/liszt-talk.pdf">Running Parallel Simulations Across Heterogeneous Processors</a> at
+<a href="http://exascale.stanford.edu/">PSAAP II</a> review, Stanford, December 2015.<br /></p>
+<p><a href="files/nimbus-istcvc-poster.pdf">Decoupling Application and Runtime Data in Graphical Simulations</a> at
+ISTC-VC retreat, October 2014.</p>
+</div id><! end inner container -->
+
+</div id><! end  container --?
+
+<div id="footer">
+<div id="footer-text">
+Page generated 2016-10-25 15:04:56 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</div>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+//<![CDATA[
+var sc_project=11105713;
+var sc_invisible=1;
+var sc_security="6579a763";
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter_xhtml.js'></"+"script>");
+//]]>
+</script>
+<noscript><div class="statcounter"><a title="shopify traffic
+stats" href="http://statcounter.com/shopify/"
+class="statcounter"><img class="statcounter"
+src="//c.statcounter.com/11105713/0/6579a763/1/"
+alt="shopify traffic stats" /></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+</body>
+</html>
