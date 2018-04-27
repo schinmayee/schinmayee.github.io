@@ -32,17 +32,21 @@ I received my M.S. from Stanford in 2014.
 Before that, I completed my undergrad from
 <a href="http://www.iitb.ac.in/">Indian Institute of Technology, Bombay</a>, in 2011.</p>
 <h2>Research</h2>
-<h3>Distributed AMR Simulations</h3>
-<p>Adaptive mesh refinement provides the ability to refine and coarsen simulation
-domains, to focus computational resources in regions of interest. For a
-large water simulation, this may be the surface, with ripples and splashes,
-and regions with turbulence and vorticities. Dynamic tree-based structures
-such as octrees and <a href="http://www.openvdb.org/">OpenVDB</a> provide data-structures
-that can adapt dynamically. Distributing such simulations efficiently is
-challenging, because of the complexity of managing neighbors, boundary data
-and communication between neighboring partitions, and load imbalance.
-I am currently researching a software stack and techniques to address these
-issues.</p>
+<h3>Automatically Distributing and Load Balancing Eulerian/Hybrid Fluid Simulations</h3>
+<p>Fluid simulations are hard to parallelize and distribute efficiently.
+It requires carefully reasoning about data exchanges, interleaving communication
+and computation, and distributing work evenly.
+Many existing domain specific languages or systems either have a restrictive
+programming model or own the data, requiring application data structures and
+code to be completely rewritten.
+Often, it is beneficial to have custom application data structures such as
+trees, particles and dynamic sparse grids.
+As many graphical simulations take large time steps, the variation across
+partitions over time is more rapid.
+Since the speed of a simulation is determined by the most overloaded node,
+it is important to distribute work evenly.
+In my research, I explore techniques to automatically distribute and load-balance
+complex simulations.</p>
 <h3><a href="http://ebblang.org">Ebb DSL For Physical Simulations</a></h3>
 <p>Ebb is a language for writing performance portable physical simulations &ndash;
 Ebb programs can run efficiently on CPUs and GPUs.
@@ -124,16 +128,19 @@ for communication. More details and derivations are in the project report
 <a href="files/DMT-relays.pdf">here</a>.</p>
 <h2>Papers</h2>
 <p><br />
-<a href="http://dl.acm.org/citation.cfm?id=2892632">Ebb: A DSL for Physical Simulation on CPUs and GPUs</a> <br />
+<a href="https://dl.acm.org/citation.cfm?id=3190516">Decoupling the control plane from program control flow for flexibility and performance in cloud computing</a> <br />
+Hang Qu, Omid Mashayekhi, Chinmayee Shah, Philip Levis <br />
+Proceedings of the Thirteenth EuroSys Conference (2018). <br /></p>
+<p><a href="files/nimbus-tog18.pdf">Automatically Distributing Eulerian and Hybrid Fluid Simulations in the Cloud</a> <br />
+Omid Mashayekhi, Chinmayee Shah, Hang Qu, Andrew Lim, and Philip Levis <br />
+To appear in Transactions on Graphics (2018).</p>
+<p><a href="files/exec-templates.pdf">Execution Templates: Caching Control Plane Decisions for Strong Scaling of Data Analytics</a> <br />
+Omid Mashayekhi, Chinmayee Shah, Hang Qu, and Philip Levis <br />
+Usenix ATC (2017). <br /></p>
+<p><a href="http://dl.acm.org/citation.cfm?id=2892632">Ebb: A DSL for Physical Simulation on CPUs and GPUs</a> <br />
 Gilbert Bernstein, Chinmayee Shah, Crystal Lemire, Zachary DeVito,
 Matthew Fisher, Philip Levis, and Pat Hanrahan <br />
 ACM Transactions on Graphics (TOG) 35, no. 2 (2016): 21. <br /></p>
-<p><a href="http://arxiv.org/abs/1606.01966">Distributed Graphical Simulation in the Cloud</a> <br />
-Omid Mashayekhi, Chinmayee Shah, Hang Qu, Andrew Lim, and Philip Levis <br />
-arXiv preprint arXiv:1606.01966 (2016). <br /></p>
-<p><a href="http://arxiv.org/abs/1606.01972">Scalable, Fast Cloud Computing with Execution Templates</a> <br />
-Omid Mashayekhi, Hang Qu, Chinmayee Shah, and Philip Levis <br />
-arXiv preprint arXiv:1606.01972 (2016). <br /></p>
 <p><a href="https://sing.stanford.edu/site/publications/igcc14kazandjieva.pdf">System Architecture Support for Green Enterprise Computing</a> <br />
 Maria Kazandjieva, Chinmayee Shah, Ewen Cheslack-Postava,
 Behram Mistree, and Philip Levis <br />
@@ -154,7 +161,7 @@ ISTC-VC retreat, October 2014.</p>
 
 <div id="footer">
 <div id="footer-text">
-Page generated 2016-10-25 15:04:56 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+Page generated 2018-04-27 13:21:53 PDT, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
 </div>
 </div>
 </div>

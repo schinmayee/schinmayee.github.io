@@ -33,17 +33,21 @@ Before that, I completed my undergrad from
 
 == Research
 
-=== Distributed AMR Simulations
-Adaptive mesh refinement provides the ability to refine and coarsen simulation
-domains, to focus computational resources in regions of interest. For a
-large water simulation, this may be the surface, with ripples and splashes,
-and regions with turbulence and vorticities. Dynamic tree-based structures
-such as octrees and [http://www.openvdb.org/ OpenVDB] provide data-structures
-that can adapt dynamically. Distributing such simulations efficiently is
-challenging, because of the complexity of managing neighbors, boundary data
-and communication between neighboring partitions, and load imbalance.
-I am currently researching a software stack and techniques to address these
-issues.
+=== Automatically Distributing and Load Balancing Eulerian/Hybrid Fluid Simulations
+Fluid simulations are hard to parallelize and distribute efficiently.
+It requires carefully reasoning about data exchanges, interleaving communication
+and computation, and distributing work evenly.
+Many existing domain specific languages or systems either have a restrictive
+programming model or own the data, requiring application data structures and
+code to be completely rewritten.
+Often, it is beneficial to have custom application data structures such as
+trees, particles and dynamic sparse grids.
+As many graphical simulations take large time steps, the variation across
+partitions over time is more rapid.
+Since the speed of a simulation is determined by the most overloaded node,
+it is important to distribute work evenly.
+In my research, I explore techniques to automatically distribute and load-balance
+complex simulations.
 
 === [http://ebblang.org Ebb DSL For Physical Simulations]
 Ebb is a language for writing performance portable physical simulations --
@@ -137,21 +141,26 @@ for communication. More details and derivations are in the project report
 == Papers
 
 \n
+[https://dl.acm.org/citation.cfm?id=3190516
+Decoupling the control plane from program control flow for flexibility and performance in cloud computing] \n
+Hang Qu, Omid Mashayekhi, Chinmayee Shah, Philip Levis \n
+Proceedings of the Thirteenth EuroSys Conference (2018). \n
+
+[files/nimbus-tog18.pdf
+Automatically Distributing Eulerian and Hybrid Fluid Simulations in the Cloud] \n
+Omid Mashayekhi, Chinmayee Shah, Hang Qu, Andrew Lim, and Philip Levis \n
+To appear in Transactions on Graphics (2018).
+
+[files/exec-templates.pdf
+Execution Templates: Caching Control Plane Decisions for Strong Scaling of Data Analytics] \n
+Omid Mashayekhi, Chinmayee Shah, Hang Qu, and Philip Levis \n
+Usenix ATC (2017). \n
+
 [http://dl.acm.org/citation.cfm?id=2892632
 Ebb: A DSL for Physical Simulation on CPUs and GPUs] \n
 Gilbert Bernstein, Chinmayee Shah, Crystal Lemire, Zachary DeVito,
 Matthew Fisher, Philip Levis, and Pat Hanrahan \n
 ACM Transactions on Graphics (TOG) 35, no. 2 (2016): 21. \n
-
-[http://arxiv.org/abs/1606.01966
-Distributed Graphical Simulation in the Cloud] \n
-Omid Mashayekhi, Chinmayee Shah, Hang Qu, Andrew Lim, and Philip Levis \n
-arXiv preprint arXiv:1606.01966 (2016). \n
-
-[http://arxiv.org/abs/1606.01972
-Scalable, Fast Cloud Computing with Execution Templates] \n
-Omid Mashayekhi, Hang Qu, Chinmayee Shah, and Philip Levis \n
-arXiv preprint arXiv:1606.01972 (2016). \n
 
 [https://sing.stanford.edu/site/publications/igcc14kazandjieva.pdf
 System Architecture Support for Green Enterprise Computing] \n
